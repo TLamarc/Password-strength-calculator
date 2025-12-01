@@ -6,15 +6,21 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * A password analysis utility that computes the minimal Euclidean distance
+ * between a password's "affinity mask" and a set of precomputed cluster centers.
+ *
+ * <p>This class is designed using the Singleton pattern. Use
+ * {@link #getInstance()} to obtain the shared instance.</p>
+ *
+ * <p>The cluster centers are loaded from a CSV file named
+ * {@code cluster_centers_HAC_aff.csv} located in the classpath.</p>
+ */
 public class AwesomePasswordChecker {
 
   private static AwesomePasswordChecker instance;
@@ -27,7 +33,14 @@ public class AwesomePasswordChecker {
     }
     return instance;
   }
-  
+
+    /**
+     * Returns the singleton instance using a custom cluster-centers file.
+     *
+     * @param   file CSV file containing the cluster center vectors separated by semicolons
+     * @return the shared {@code AwesomePasswordChecker} instance
+     * @throws IOException if the file cannot be opened or parsed
+     */
   public static AwesomePasswordChecker getInstance() throws IOException {
     if (instance == null) {
       InputStream is = AwesomePasswordChecker.class.getClassLoader().getResourceAsStream("cluster_centers_HAC_aff.csv");
