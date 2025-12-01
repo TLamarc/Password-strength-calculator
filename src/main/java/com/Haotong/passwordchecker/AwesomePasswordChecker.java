@@ -1,4 +1,4 @@
-package com.haotong;
+package com.haotong.passwordchecker;
 
 import java.io.BufferedReader;
 import java.io.File;
