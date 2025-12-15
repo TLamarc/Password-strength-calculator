@@ -66,7 +66,7 @@ public class AwesomePasswordChecker {
      * @return the shared {@code AwesomePasswordChecker} instance
      * @throws IOException if the resource cannot be found or parsed
      */
-    public static AwesomePasswordChecker getInstance() throws IOException {
+    public static AwesomePasswordChecker getInstance() throws IOException {//AwesomePasswordChecker
         if (instance == null) {
             InputStream is = AwesomePasswordChecker.class
                     .getClassLoader()

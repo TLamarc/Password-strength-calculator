@@ -31,13 +31,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>3.6.0</version>
+
+                <dependencies>
+                    <!-- 官方 Checkstyle -->
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>10.12.5</version>
+                    </dependency>
+                </dependencies>
+
                 <configuration>
-                    <configLocation>checkstyle.xml</configLocation>
+                    <!-- 直接使用 Checkstyle 自带的 Google 规则 -->
+                    <configLocation>google_checks.xml</configLocation>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                 </configuration>
+
                 <executions>
                     <execution>
                         <id>checkstyle</id>
@@ -48,6 +60,7 @@
                     </execution>
                 </executions>
             </plugin>
+
 
             <!-- Needed so JUnit 5 tests run correctly -->
             <plugin>
