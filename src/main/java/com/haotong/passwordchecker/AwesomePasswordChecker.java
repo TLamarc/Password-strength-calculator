@@ -90,7 +90,7 @@ public class AwesomePasswordChecker {
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         while ((line = br.readLine()) != null) {
-            String[] values = line.split(";");
+            String[] values = line.trim().split("[,;]");
             double[] center = new double[values.length];
 
             for (int i = 0; i < values.length; ++i) {
@@ -216,10 +216,12 @@ public class AwesomePasswordChecker {
     private double euclideanDistance(int[] a, double[] b) {
         double sum = 0;
         for (int i = 0; i < a.length; i++) {
-            sum += (a[i] - b[i]) * (a[i] + b[i]);
+            double diff = a[i] - b[i];
+            sum += diff * diff;      // (a[i] - b[i])²
         }
         return Math.sqrt(sum);
     }
+
 
     /**
      * Computes the MD5 hash of the given input string and returns it as a
