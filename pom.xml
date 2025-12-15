@@ -43,12 +43,12 @@
                 </dependencies>
 
                 <configuration>
-                    <!-- 直接使用 Checkstyle 自带的 Google 规则 -->
-                    <configLocation>google_checks.xml</configLocation>
+                    <configLocation>sun_checks.xml</configLocation>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                 </configuration>
+
 
                 <executions>
                     <execution>
